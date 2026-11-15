@@ -666,6 +666,36 @@ window.RDA_RES = function(p){ try { return (window.__resources && window.RDA_MAP
       </div>
     </section>
 
+    <!-- LATEST WORK -->
+    <section style="max-width:1280px; margin:0 auto; padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px) 0;">
+      <div data-reveal="0" style="text-align:center; max-width:640px; margin:0 auto 46px;">
+        <span style="color:var(--acc); font-size:12px; font-weight:600; letter-spacing:.3em; text-transform:uppercase;">{{ work_eyebrow }}</span>
+        <h2 style="font-family:var(--f-display); font-weight:600; font-size:clamp(28px,4vw,50px); line-height:1.1; color:#fff; margin:18px 0 16px;">{{ work_head }}</h2>
+        <p style="font-size:16px; line-height:1.7; color:#9d9d96; font-weight:300; margin:0;">{{ work_sub }}</p>
+      </div>
+      <div data-workgrid="" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
+        <sc-for list="{{ works }}" as="w" hint-placeholder-count="4">
+          <div data-reveal="{{ w.i }}" style="background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.08); border-radius:6px; overflow:hidden; display:flex; flex-direction:column;">
+            <a href="{{ w.ig }}" target="_blank" rel="noopener" style="position:relative; display:block; aspect-ratio:9/16; background:#000;">
+              <img src="{{ w.img }}" alt="{{ w.t }}" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;">
+              <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, transparent 55%, rgba(10,10,11,.75) 100%);"><span style="display:flex; align-items:center; justify-content:center; width:54px; height:54px; border-radius:50%; background:rgba(244,229,0,.92); box-shadow:0 0 30px rgba(244,229,0,.45);"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0a0a0b"><path d="M8 5v14l11-7z"></path></svg></span></span>
+            </a>
+            <div style="padding:14px 14px 16px; display:flex; flex-direction:column; gap:12px; flex:1;">
+              <div style="font-family:var(--f-display); font-weight:600; font-size:15px; color:#fff; line-height:1.35;">{{ w.t }}</div>
+              <div style="display:flex; gap:8px; margin-top:auto;">
+                <a href="{{ w.ig }}" target="_blank" rel="noopener" title="Instagram" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid rgba(244,229,0,.35); background:rgba(244,229,0,.05); color:var(--acc); text-decoration:none;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"></rect><circle cx="12" cy="12" r="4.3"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"></circle></svg></a>
+                <a href="{{ w.tt }}" target="_blank" rel="noopener" title="TikTok" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid rgba(244,229,0,.35); background:rgba(244,229,0,.05); color:var(--acc); text-decoration:none;"><svg width="15" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2h-3v14a2.5 2.5 0 1 1-2.5-2.5c.27 0 .53.04.78.12v-3.1a5.6 5.6 0 0 0-.78-.06A5.55 5.55 0 1 0 16.5 16V8.6a7.1 7.1 0 0 0 4.2 1.36v-3A4.1 4.1 0 0 1 16.5 2z"></path></svg></a>
+                <a href="{{ w.yt }}" target="_blank" rel="noopener" title="YouTube" style="display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; border:1px solid rgba(244,229,0,.35); background:rgba(244,229,0,.05); color:var(--acc); text-decoration:none;"><svg width="17" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"></path></svg></a>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="1" style="text-align:center; margin-top:30px;">
+        <a href="https://www.instagram.com/rey.dosautos" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; color:var(--acc); font-size:13px; font-weight:600; letter-spacing:.12em; text-decoration:none; border:1px solid rgba(244,229,0,.4); border-radius:3px; padding:13px 22px;" style-hover="background:var(--acc); color:#0a0a0b;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.4"></rect><circle cx="12" cy="12" r="4.3"></circle><circle cx="17.6" cy="6.4" r="1.2" fill="currentColor" stroke="none"></circle></svg><span>{{ work_more }}</span></a>
+      </div>
+    </section>
+
     <!-- GALLERY TEASER -->
     <section style="max-width:1280px; margin:0 auto; padding:clamp(70px,9vw,120px) clamp(20px,5vw,64px);">
       <div data-reveal="0" style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:44px; flex-wrap:wrap;">
@@ -1029,6 +1059,7 @@ window.RDA_RES = function(p){ try { return (window.__resources && window.RDA_MAP
       [data-masonry]{ column-count:2 !important; }
       [data-footgrid]{ grid-template-columns:1fr 1fr !important; }
       [data-svcrow]{ grid-template-columns:1fr !important; text-align:start; }
+      [data-workgrid]{ grid-template-columns:repeat(2,1fr) !important; gap:12px !important; }
       [data-svcrow] > div:last-child{ align-items:flex-start !important; text-align:start !important; }
     }
     @media (max-width:900px){
@@ -1082,6 +1113,12 @@ class Component extends DCLogic {
   // Prices: read live from the Google Sheet «Rey Dos Autos — أسعار الموقع» (column key + column «السعر $»).
   // If the sheet can't be read, or a cell is not a number, the prices written in tr.*.services stay.
   PRICE_SHEET = 'https://docs.google.com/spreadsheets/d/10RTl5oMXFZqHCSYLoYaMP4GW_RVqzmdr7s0WwiilzJ8/gviz/tq?tqx=out:csv';
+  WORKS = [
+    { img:'assets/image/work-pickup-v01.jpg', ig:'https://www.instagram.com/reel/DfwTVYzDfBN/', tt:'https://www.tiktok.com/@rey_dos_autos/video/7708164164757245202', yt:'https://youtube.com/shorts/LYzI7xOZ7a0', t:{ ar:'بيك أب «Monster»: غسيل كامل', fr:'Pick-up « Monster » : lavage complet', en:'«Monster» pickup: full wash' } },
+    { img:'assets/image/work-engine-v01.jpg', ig:'https://www.instagram.com/reel/Dfr7iyypjoC/', tt:'https://www.tiktok.com/@rey_dos_autos/video/7707676792915594516', yt:'https://youtube.com/shorts/yM2Ov7u9Uec', t:{ ar:'غسيل موتور: قبل وبعد', fr:'Moteur : avant / après', en:'Engine bay: before / after' } },
+    { img:'assets/image/work-carpet-v02.jpg', ig:'https://www.instagram.com/reel/Dfnbv8sheG1/', tt:'https://www.tiktok.com/@rey_dos_autos/video/7707027517089090836', yt:'https://youtube.com/shorts/xgb8tlBD4ow', t:{ ar:'غسيل فرش السيارة', fr:'Nettoyage des tapis', en:'Carpet deep clean' } },
+    { img:'assets/image/work-interior-v01.jpg', ig:'https://www.instagram.com/reel/DfhIdpgJISf/', tt:'https://www.tiktok.com/@rey_dos_autos/video/7706117686060748084', yt:'https://youtube.com/shorts/u6qla8ysj2A', t:{ ar:'تنظيف داخلي كامل', fr:'Nettoyage intérieur complet', en:'Full interior clean' } }
+  ];
   PRICE_KEYS = ['basic_car','basic_suv','engine','upholstery','polish','detailing'];
   loadPrices(){
     const parse = (line)=>{ const out=[]; let cur='', q=false; for(let i=0;i<line.length;i++){ const c=line[i]; if(q){ if(c==='"'){ if(line[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=c; } else if(c==='"') q=true; else if(c===','){ out.push(cur); cur=''; } else cur+=c; } out.push(cur); return out; };
@@ -1116,6 +1153,7 @@ class Component extends DCLogic {
       about_p1:'REY DOS AUTOS is a professional car wash and detailing center built on one obsession — a spotless, brilliant finish. From foam to final shine, every vehicle passes through our hexagon-lit bays under the hands of a crew that treats car care as a craft.',
       feat:['Hexagon-lit professional wash bays','High-quality products & professional equipment','A trained, passionate crew'],
       about_cta:'About us',
+      work_eyebrow:'Latest Work', work_head:'Fresh from our bay.', work_sub:'Our latest reels, filmed at Rey Dos Autos in Aïtit.', work_more:'More on Instagram',
       svc_eyebrow:'What We Do', svc_head:'A treatment for every vehicle.',
       svc_sub:'From a quick exterior wash to a complete interior & exterior clean — choose the level of care your car deserves.',
       svc_from:'From', svc_note:'Final price depends on vehicle size & condition.',
@@ -1169,6 +1207,7 @@ class Component extends DCLogic {
       about_p1:'REY DOS AUTOS est un centre professionnel de lavage et de detailing né d’une obsession — une finition impeccable et brillante. De la mousse à la brillance finale, chaque véhicule passe dans nos cabines éclairées en hexagone, entre les mains d’une équipe pour qui le soin automobile est un art.',
       feat:['Cabines de lavage éclairées en hexagone','Produits de qualité & équipement professionnel','Une équipe formée et passionnée'],
       about_cta:'À propos',
+      work_eyebrow:'Derniers travaux', work_head:'Tout frais de notre atelier.', work_sub:'Nos derniers reels, filmés chez Rey Dos Autos à Aïtit.', work_more:'Plus sur Instagram',
       svc_eyebrow:'Ce que nous faisons', svc_head:'Un traitement pour chaque véhicule.',
       svc_sub:'D’un lavage extérieur rapide à un nettoyage complet intérieur et extérieur — choisissez le niveau de soin que mérite votre voiture.',
       svc_from:'Dès', svc_note:'Le prix final dépend de la taille et de l’état du véhicule.',
@@ -1222,6 +1261,7 @@ class Component extends DCLogic {
       about_p1:'ري دوس أوتوس مركز احترافي لغسيل والعناية بالسيارات وُلد من شغف واحد — نظافة ولمعان لا يُضاهى. من الرغوة حتى اللمعان الأخير، تمرّ كل سيارة في أحواضنا المضاءة بإضاءة سداسية بين أيدي فريق يعتبر العناية بالسيارات فناً.',
       feat:['أحواض غسيل بإضاءة سداسية','منتجات عالية الجودة ومعدات احترافية','فريق مدرّب وشغوف'],
       about_cta:'عن المركز',
+      work_eyebrow:'آخر شغلنا', work_head:'طازة من عنّا.', work_sub:'آخر الريلز تبعنا، متصوّرة بمركزنا بعيتيت.', work_more:'شوف أكتر عـInstagram',
       svc_eyebrow:'ماذا نقدّم', svc_head:'خدمة تناسب كل سيارة.',
       svc_sub:'من غسيل خارجي سريع إلى عناية كاملة داخلية وخارجية — اختر مستوى العناية الذي تستحقه سيارتك.',
       svc_from:'تبدأ من', svc_note:'يعتمد السعر النهائي على حجم السيارة وحالتها.',
@@ -1488,6 +1528,7 @@ class Component extends DCLogic {
       return { active, go:()=>this.go(route), el: React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:'3px',color:active?'var(--acc)':'#9a9a92',transition:'color .25s'}}, tabIcon[route](), React.createElement('span',{style:{fontSize:'9.5px',fontWeight:active?700:500,letterSpacing:'.01em',whiteSpace:'nowrap'}}, L.nav[li])) };
     });
     const services = L.services.map((s,i)=>({ ...s, p:this.priceFor(i, s.p), i, num:String(i+1).padStart(2,'0'), wa:'https://wa.me/96170371935?text='+encodeURIComponent(L.svc_wa_msg+' '+s.n) }));
+    const works = this.WORKS.map((w,i)=>({ ...w, i, t:w.t[st.lang]||w.t.en }));
     const marqueeLoop = [...L.marquee, ...L.marquee].map(t=>({t}));
     const teaserSrc = ['assets/image/g-sclass-4407.jpg','assets/image/g-rangerover-4517.jpg','assets/image/g-jeep-5096.jpg','assets/image/g-pickup-4731.jpg','uploads/IMG_20220707_002128_180.jpg'];
     const teaserPos = [['span 2','span 2'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1']];
@@ -1517,6 +1558,7 @@ class Component extends DCLogic {
       brandTag:L.brandTag, cta_book:L.cta_book, cta_book_short:L.cta_book_short, cta_services:L.cta_services, viewall:L.viewall, loc:L.loc,
       heroPre:L.heroPre, heroWelcome:L.heroWelcome, heroSub:L.heroSub, scroll:L.scroll,
       about_eyebrow:L.about_eyebrow, about_head:L.about_head, about_p1:L.about_p1, about_cta:L.about_cta,
+      works, work_eyebrow:L.work_eyebrow, work_head:L.work_head, work_sub:L.work_sub, work_more:L.work_more,
       svc_eyebrow:L.svc_eyebrow, svc_head:L.svc_head, svc_sub:L.svc_sub, svc_from:L.svc_from, svc_note:L.svc_note,
       showcase_eyebrow:L.showcase_eyebrow, showcase_head:L.showcase_head, showcase_p:L.showcase_p, showcase_watch:L.showcase_watch, stat1:L.stat1, stat2:L.stat2,
       ba_eyebrow:L.ba_eyebrow, ba_head:L.ba_head, ba_sub:L.ba_sub, ba_before:L.ba_before, ba_after:L.ba_after,
