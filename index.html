@@ -1048,8 +1048,32 @@ class Component extends DCLogic {
     lb: -1,
     bookErr: false,
     bookSent: false,
-    form: { name:'', phone:'', vehicle:'', service:'', date:'', time:'', notes:'' }
+    form: { name:'', phone:'', vehicle:'', service:'', date:'', time:'', notes:'' },
+    prices: null
   };
+
+  // Prices: read live from the Google Sheet «Rey Dos Autos — أسعار الموقع» (column key + column «السعر $»).
+  // If the sheet can't be read, or a cell is not a number, the prices written in tr.*.services stay.
+  PRICE_SHEET = 'https://docs.google.com/spreadsheets/d/10RTl5oMXFZqHCSYLoYaMP4GW_RVqzmdr7s0WwiilzJ8/gviz/tq?tqx=out:csv';
+  PRICE_KEYS = ['basic_car','basic_suv','engine','upholstery','polish','detailing'];
+  loadPrices(){
+    const parse = (line)=>{ const out=[]; let cur='', q=false; for(let i=0;i<line.length;i++){ const c=line[i]; if(q){ if(c==='"'){ if(line[i+1]==='"'){cur+='"';i++;} else q=false; } else cur+=c; } else if(c==='"') q=true; else if(c===','){ out.push(cur); cur=''; } else cur+=c; } out.push(cur); return out; };
+    fetch(this.PRICE_SHEET + '&t=' + Math.floor(Date.now()/60000), {cache:'no-store'})
+      .then(r=>{ if(!r.ok) throw new Error(r.status); return r.text(); })
+      .then(txt=>{
+        const rows = txt.split(String.fromCharCode(10)).map(l=>parse(l.split(String.fromCharCode(13)).join('')));
+        const byKey = {};
+        rows.forEach(r=>{ const k=(r[0]||'').trim(); const v=parseFloat(Array.from(String(r[3]||'')).filter(c=>'0123456789.'.indexOf(c)>=0).join('')); if(k && isFinite(v) && v>0 && v<100000) byKey[k]=v; });
+        const prices = this.PRICE_KEYS.map(k=> (k in byKey) ? byKey[k] : null);
+        if(prices.some(v=>v!==null)) this.setState({prices});
+      })
+      .catch(()=>{});
+  }
+  priceFor(i, fallback){
+    const v = this.state.prices && this.state.prices[i];
+    if(v===null || v===undefined) return fallback;
+    return this.state.lang==='fr' ? v+' $' : '$'+v;
+  }
 
   tr = {
     en: {
@@ -1249,6 +1273,7 @@ class Component extends DCLogic {
     if (dl && this.tr[dl] && dl !== this.state.lang) { this.setState({lang:dl}); }
     this.applyTheme();
     this.injectManifest();
+    this.loadPrices();
     this.io = new IntersectionObserver((es)=>{
       es.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='none'; this.io.unobserve(e.target); } });
     }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
@@ -1424,7 +1449,7 @@ class Component extends DCLogic {
       const active = st.route===route;
       return { active, go:()=>this.go(route), el: React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:'3px',color:active?'var(--acc)':'#9a9a92',transition:'color .25s'}}, tabIcon[route](), React.createElement('span',{style:{fontSize:'9.5px',fontWeight:active?700:500,letterSpacing:'.01em',whiteSpace:'nowrap'}}, L.nav[li])) };
     });
-    const services = L.services.map((s,i)=>({ ...s, i, num:String(i+1).padStart(2,'0') }));
+    const services = L.services.map((s,i)=>({ ...s, p:this.priceFor(i, s.p), i, num:String(i+1).padStart(2,'0') }));
     const marqueeLoop = [...L.marquee, ...L.marquee].map(t=>({t}));
     const teaserSrc = ['uploads/IMG-20220707-WA0374.jpg','uploads/IMG_20220707_002128_180.jpg','uploads/IMG-20220707-WA0016.jpg','uploads/IMG-20220706-WA0086.jpg','uploads/IMG-20220707-WA0077.jpg'];
     const teaserPos = [['span 2','span 2'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1']];
