@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><script>window.__resources = {"r9":"assets/image/r9-e91bea00.png","r11":"assets/image/r11-8bba0130.png","r2":"assets/image/r2-43305c46.jpg","r7":"assets/image/r7-a6228edf.jpg","r4":"assets/image/r4-ec2a91e9.jpg","r10":"assets/image/r10-90ac8671.png","r6":"assets/image/r6-bdb6a955.jpg","r1":"assets/image/r1-4117b48d.jpg","r3":"assets/image/r3-d2f61174.jpg","r8":"assets/image/r8-5124643f.jpg","r5":"assets/image/r5-474ba678.jpg"};</script>
+<html lang="ar" dir="rtl"><head><script>window.__resources = {"r9":"assets/image/r9-e91bea00.png","r11":"assets/image/r11-8bba0130.png","r2":"assets/image/r2-noplate-v1.jpg","r7":"assets/image/r7-a6228edf.jpg","r4":"assets/image/r4-noplate-v1.jpg","r10":"assets/image/r10-90ac8671.png","r6":"assets/image/r6-noplate-v1.jpg","r1":"assets/image/r1-4117b48d.jpg","r3":"assets/image/r3-noplate-v1.jpg","r8":"assets/image/r8-noplate-v1.jpg","r5":"assets/image/r5-474ba678.jpg"};</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rey Dos Autos — Car Wash &amp; Detailing in Aïtit, South Lebanon</title>
@@ -1237,7 +1237,18 @@ class Component extends DCLogic {
     }
   };
 
+  // 2026-11-15: newer Lebanon-confirmed work first (plates blurred), then the original shop photos.
   gallery = [
+    {src:'assets/image/g-sclass-4407.jpg', cat:'results'},
+    {src:'assets/image/g-maserati-4410.jpg', cat:'results'},
+    {src:'assets/image/g-rangerover-4517.jpg', cat:'results'},
+    {src:'assets/image/g-jeep-5096.jpg', cat:'results'},
+    {src:'assets/image/g-pickup-4731.jpg', cat:'results'},
+    {src:'assets/image/g-bmwx5-4792.jpg', cat:'results'},
+    {src:'assets/image/g-engine-4719.jpg', cat:'results'},
+    {src:'assets/image/g-interior-4468.jpg', cat:'results'},
+    {src:'assets/image/g-actros-4994.jpg', cat:'results'},
+    {src:'assets/image/g-fogger-4622.jpg', cat:'action'},
     {src:'uploads/IMG_20220707_002128_180.jpg', cat:'facility'},
     {src:'uploads/IMG-20220707-WA0374.jpg', cat:'results'},
     {src:'uploads/IMG-20220707-WA0016.jpg', cat:'team'},
@@ -1451,7 +1462,7 @@ class Component extends DCLogic {
     });
     const services = L.services.map((s,i)=>({ ...s, p:this.priceFor(i, s.p), i, num:String(i+1).padStart(2,'0') }));
     const marqueeLoop = [...L.marquee, ...L.marquee].map(t=>({t}));
-    const teaserSrc = ['uploads/IMG-20220707-WA0374.jpg','uploads/IMG_20220707_002128_180.jpg','uploads/IMG-20220707-WA0016.jpg','uploads/IMG-20220706-WA0086.jpg','uploads/IMG-20220707-WA0077.jpg'];
+    const teaserSrc = ['assets/image/g-sclass-4407.jpg','assets/image/g-rangerover-4517.jpg','assets/image/g-jeep-5096.jpg','assets/image/g-pickup-4731.jpg','uploads/IMG_20220707_002128_180.jpg'];
     const teaserPos = [['span 2','span 2'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1'],['span 1','span 1']];
     const teaser = teaserSrc.map((src,i)=>({ i, open:()=>{ const idx=this.gallery.findIndex(g=>g.src===src); this.setState({galFilter:'all'}); this.openLb(idx<0?0:idx); }, col:teaserPos[i][0], row:teaserPos[i][1], img:this.imgEl(src,{width:'100%',height:'100%',objectFit:'cover',display:'block'},true) }));
     const fk = ['all','facility','team','action','results'];
