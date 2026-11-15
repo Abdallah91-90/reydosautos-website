@@ -523,7 +523,8 @@ window.RDA_RES = function(p){ try { return (window.__resources && window.RDA_MAP
       <div style="position:absolute; inset:0; z-index:0;">
         <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
           <video autoplay="" muted="" loop="" playsinline="" style="width:100%; height:100%; object-fit:cover; display:block; background:#0a0a0b;">
-            <source src="assets/video/7dca1a32.mp4" type="video/mp4">
+            <source src="assets/video/hero-desktop-v1.mp4" type="video/mp4" media="(min-aspect-ratio: 1/1)">
+            <source src="assets/video/hero-mobile-v1.mp4" type="video/mp4">
           </video>
         </sc-if>
         <sc-if value="{{ noVideo }}" hint-placeholder-val="{{ false }}">
