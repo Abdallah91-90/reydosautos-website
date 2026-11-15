@@ -604,7 +604,7 @@ window.RDA_RES = function(p){ try { return (window.__resources && window.RDA_MAP
         </div>
         <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;" data-grid3="">
           <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
-            <div data-reveal="{{ s.i }}" style="position:relative; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.08); border-radius:5px; padding:34px 30px; overflow:hidden; transition:border-color .35s, transform .35s, background .35s;" style-hover="border-color:rgba(244,229,0,.45); transform:translateY(-6px); background:rgba(244,229,0,.03);">
+            <div data-reveal="{{ s.i }}" data-svccard="" style="position:relative; background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.08); border-radius:5px; padding:34px 30px; overflow:hidden; transition:border-color .35s, transform .35s, background .35s;" style-hover="border-color:rgba(244,229,0,.45); transform:translateY(-6px); background:rgba(244,229,0,.03);">
               <div style="display:flex; align-items:center; justify-content:center; width:54px; height:60px; background:rgba(244,229,0,.1); clip-path:polygon(25% 4%,75% 4%,100% 50%,75% 96%,25% 96%,0 50%); margin-bottom:24px;">
                 <span style="font-family:var(--f-display); font-weight:700; font-size:18px; color:var(--acc);">{{ s.num }}</span>
               </div>
@@ -1029,6 +1029,24 @@ window.RDA_RES = function(p){ try { return (window.__resources && window.RDA_MAP
       [data-footgrid]{ grid-template-columns:1fr 1fr !important; }
       [data-svcrow]{ grid-template-columns:1fr !important; text-align:start; }
       [data-svcrow] > div:last-child{ align-items:flex-start !important; text-align:start !important; }
+    }
+    @media (max-width:640px){
+      [data-svccard]{ display:grid !important; grid-template-columns:40px 1fr auto; align-items:center; column-gap:14px; padding:14px 16px !important; }
+      [data-svccard] > div:first-child{ width:36px !important; height:40px !important; margin:0 !important; }
+      [data-svccard] > div:first-child span{ font-size:13px !important; }
+      [data-svccard] h3{ font-size:16px !important; margin:0 !important; line-height:1.3; }
+      [data-svccard] p{ display:none !important; }
+      [data-svccard] > div:last-child{ padding:0 !important; border:0 !important; flex-direction:column; align-items:flex-end !important; gap:0 !important; }
+      [data-svccard] > div:last-child span:first-child{ font-size:9px !important; letter-spacing:.12em !important; }
+      [data-svccard] > div:last-child span:last-child{ font-size:19px !important; }
+      [data-grid3]{ gap:10px !important; }
+      [data-svcrow]{ grid-template-columns:1fr auto !important; gap:12px 16px !important; padding:18px 16px !important; align-items:start !important; }
+      [data-svcrow] > div:first-child{ display:none !important; }
+      [data-svcrow] h3{ font-size:18px !important; margin:0 0 6px !important; }
+      [data-svcrow] p{ font-size:13px !important; line-height:1.55 !important; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+      [data-svcrow] > div:last-child{ align-items:flex-end !important; text-align:end !important; gap:10px !important; }
+      [data-svcrow] > div:last-child > div > div:last-child{ font-size:22px !important; }
+      [data-svcrow] button{ padding:8px 12px !important; font-size:10px !important; }
     }
     @media (max-width:560px){
       [data-masonry]{ column-count:1 !important; }
